@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Core\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\World\WorldSpawner.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>
