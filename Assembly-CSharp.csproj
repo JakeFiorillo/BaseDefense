@@ -48,9 +48,12 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.1.4f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Resources\ToolData.cs" />
     <Compile Include="Assets\Scripts\Core\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\World\WorldSpawner.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerHarvest.cs" />
+    <Compile Include="Assets\Scripts\Resources\Harvestable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
