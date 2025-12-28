@@ -5,67 +5,70 @@ public class PlayerHarvest : MonoBehaviour
 {
     public ToolData currentTool;
     public float harvestRange = 1.5f;
-    public LayerMask harvestLayer;
+    public LayerMask harvestableLayer;
 
-    private bool isSwinging = false;
+    private bool isHarvesting = false;
+    private Coroutine harvestCoroutine;
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !isSwinging)
+        // Start harvesting when mouse is held
+        if (Input.GetMouseButton(0))
         {
-            StartCoroutine(Swing());
-        }
-    }
-
-    IEnumerator Swing()
-    {
-        isSwinging = true;
-
-        // Small delay = swing time
-        yield return new WaitForSeconds(currentTool.swingTime);
-
-        RaycastHit2D hit = Physics2D.Raycast(
-            transform.position,
-            GetMouseDirection(),
-            harvestRange,
-            harvestLayer
-        );
-
-        if (hit.collider != null)
-        {
-            Harvestable harvestable = hit.collider.GetComponent<Harvestable>();
-            if (harvestable != null)
+            if (!isHarvesting)
             {
-                HandleHarvest(harvestable);
+                harvestCoroutine = StartCoroutine(HarvestLoop());
             }
         }
-
-        isSwinging = false;
+        else
+        {
+            // Stop harvesting when mouse released
+            StopHarvesting();
+        }
     }
 
-    void HandleHarvest(Harvestable harvestable)
+    IEnumerator HarvestLoop()
     {
-        int amount = 0;
+        isHarvesting = true;
 
-        if (harvestable.harvestType == HarvestType.Tree)
+        while (Input.GetMouseButton(0))
         {
-            amount = currentTool.GetTreeYield();
-            if (amount > 0)
-                Debug.Log($"Collected {amount} wood");
-        }
-        else if (harvestable.harvestType == HarvestType.Rock)
-        {
-            amount = currentTool.GetRockYield();
-            if (amount > 0)
-                Debug.Log($"Collected {amount} stone");
+            TryHarvest();
+            yield return new WaitForSeconds(currentTool.swingCooldown);
         }
 
-        // Later: add to inventory here
+        isHarvesting = false;
     }
 
-    Vector2 GetMouseDirection()
+    void StopHarvesting()
     {
-        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        return (mouseWorld - transform.position).normalized;
+        if (harvestCoroutine != null)
+        {
+            StopCoroutine(harvestCoroutine);
+            harvestCoroutine = null;
+        }
+        isHarvesting = false;
+    }
+
+    void TryHarvest()
+    {
+        Collider2D hit = Physics2D.OverlapCircle(
+            transform.position,
+            harvestRange,
+            harvestableLayer
+        );
+
+        if (hit == null) return;
+
+        Harvestable harvestable = hit.GetComponent<Harvestable>();
+        if (harvestable == null) return;
+
+        harvestable.Harvest(currentTool);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, harvestRange);
     }
 }

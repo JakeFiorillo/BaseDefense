@@ -1,12 +1,16 @@
 using UnityEngine;
 
-public enum HarvestType
-{
-    Tree,
-    Rock
-}
-
 public class Harvestable : MonoBehaviour
 {
-    public HarvestType harvestType;
+    public ResourceType resourceType;
+
+    public void Harvest(ToolData tool)
+    {
+        int amount = tool.GetHarvestAmount();
+
+        if (amount <= 0)
+            return;
+
+        InventoryManager.Instance.AddResource(resourceType, amount);
+    }
 }
