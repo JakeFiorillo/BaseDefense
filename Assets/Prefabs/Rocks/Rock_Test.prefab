@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8765011775206457655}
   - component: {fileID: 4999201656457570878}
   - component: {fileID: 888402198977835309}
-  - component: {fileID: 8882799633567426353}
   m_Layer: 3
   m_Name: Rock_Test
   m_TagString: Untagged
@@ -149,15 +148,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   harvestType: 1
---- !u!114 &8882799633567426353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9004823025992018572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5923626749bace447b4c41ad3e0fcaff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

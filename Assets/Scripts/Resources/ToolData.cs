@@ -3,27 +3,37 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Tools/Tool Data")]
 public class ToolData : ScriptableObject
 {
-    [Header("Tool Info")]
     public string toolName;
-    public float swingCooldown = 1f;
+    public float swingCooldown;
 
-    [Header("Harvest Probabilities")]
-    [Range(0f, 1f)] public float chanceForZero = 0.25f;
-    [Range(0f, 1f)] public float chanceForOne = 0.75f;
-    [Range(0f, 1f)] public float chanceForTwo = 0f;
+    public int[] treeYieldAmounts;
+    public int[] treeYieldChances;
 
-    public int GetHarvestAmount()
+    public int[] rockYieldAmounts;
+    public int[] rockYieldChances;
+
+    public int RollTreeYield()
     {
-        float roll = Random.value;
+        return Roll(treeYieldAmounts, treeYieldChances);
+    }
 
-        if (roll < chanceForZero)
-            return 0;
+    public int RollRockYield()
+    {
+        return Roll(rockYieldAmounts, rockYieldChances);
+    }
 
-        roll -= chanceForZero;
+    private int Roll(int[] values, int[] chances)
+    {
+        int roll = Random.Range(0, 100);
+        int cumulative = 0;
 
-        if (roll < chanceForOne)
-            return 1;
+        for (int i = 0; i < chances.Length; i++)
+        {
+            cumulative += chances[i];
+            if (roll < cumulative)
+                return values[i];
+        }
 
-        return 2;
+        return 0;
     }
 }

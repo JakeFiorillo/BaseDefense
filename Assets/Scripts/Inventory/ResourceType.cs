@@ -1,5 +1,4 @@
-using UnityEngine;
-
+// ResourceType.cs
 public enum ResourceType
 {
     Wood,

@@ -811,9 +811,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTool: {fileID: 11400000, guid: 541083989ba2f8548b511e7be0968ce9, type: 2}
   harvestRange: 1.2
-  harvestableLayer:
+  harvestLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!114 &544404473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1916,9 +1916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe070ceb338c5e6478e2aab6e34b730c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wood: 0
-  stone: 0
-  gold: 0
 --- !u!4 &1285002709
 Transform:
   m_ObjectHideFlags: 0

@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 7810265953077164172}
   - component: {fileID: 3634647135988726485}
   - component: {fileID: 4008818587485580948}
-  - component: {fileID: -4213929380384675578}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tree_Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,15 +148,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   harvestType: 0
---- !u!114 &-4213929380384675578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8039751270633194066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5923626749bace447b4c41ad3e0fcaff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -2,15 +2,27 @@ using UnityEngine;
 
 public class Harvestable : MonoBehaviour
 {
-    public ResourceType resourceType;
+    public HarvestType harvestType;
 
     public void Harvest(ToolData tool)
     {
-        int amount = tool.GetHarvestAmount();
+        int amount = 0;
+        ResourceType resource;
 
-        if (amount <= 0)
-            return;
+        if (harvestType == HarvestType.Tree)
+        {
+            amount = tool.RollTreeYield();
+            resource = ResourceType.Wood;
+        }
+        else // Rock
+        {
+            amount = tool.RollRockYield();
+            resource = ResourceType.Stone;
+        }
 
-        InventoryManager.Instance.AddResource(resourceType, amount);
+        if (amount > 0)
+        {
+            Inventory.Instance.AddResource(resource, amount);
+        }
     }
 }

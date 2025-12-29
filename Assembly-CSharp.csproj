@@ -49,10 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
-    <Compile Include="Assets\Scripts\Resources\ResourceNode.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryUI.cs" />
     <Compile Include="Assets\Scripts\Inventory\ResourceType.cs" />
     <Compile Include="Assets\Scripts\Resources\ToolData.cs" />
+    <Compile Include="Assets\Scripts\Inventory\HarvestType.cs" />
     <Compile Include="Assets\Scripts\Core\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\World\WorldSpawner.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />

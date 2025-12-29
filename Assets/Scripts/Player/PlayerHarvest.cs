@@ -1,53 +1,22 @@
 using UnityEngine;
-using System.Collections;
 
 public class PlayerHarvest : MonoBehaviour
 {
     public ToolData currentTool;
-    public float harvestRange = 1.5f;
-    public LayerMask harvestableLayer;
+    public float harvestRange = 1.2f;
+    public LayerMask harvestLayer;
 
-    private bool isHarvesting = false;
-    private Coroutine harvestCoroutine;
+    private float nextHarvestTime;
 
     void Update()
     {
-        // Start harvesting when mouse is held
-        if (Input.GetMouseButton(0))
-        {
-            if (!isHarvesting)
-            {
-                harvestCoroutine = StartCoroutine(HarvestLoop());
-            }
-        }
-        else
-        {
-            // Stop harvesting when mouse released
-            StopHarvesting();
-        }
-    }
+        if (currentTool == null) return;
 
-    IEnumerator HarvestLoop()
-    {
-        isHarvesting = true;
-
-        while (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && Time.time >= nextHarvestTime)
         {
             TryHarvest();
-            yield return new WaitForSeconds(currentTool.swingCooldown);
+            nextHarvestTime = Time.time + currentTool.swingCooldown;
         }
-
-        isHarvesting = false;
-    }
-
-    void StopHarvesting()
-    {
-        if (harvestCoroutine != null)
-        {
-            StopCoroutine(harvestCoroutine);
-            harvestCoroutine = null;
-        }
-        isHarvesting = false;
     }
 
     void TryHarvest()
@@ -55,17 +24,27 @@ public class PlayerHarvest : MonoBehaviour
         Collider2D hit = Physics2D.OverlapCircle(
             transform.position,
             harvestRange,
-            harvestableLayer
+            harvestLayer
         );
 
-        if (hit == null) return;
+        if (hit == null)
+        {
+            Debug.Log("No harvestable in range");
+            return;
+        }
 
         Harvestable harvestable = hit.GetComponent<Harvestable>();
-        if (harvestable == null) return;
+
+        if (harvestable == null)
+        {
+            Debug.Log("Hit object but no Harvestable component");
+            return;
+        }
 
         harvestable.Harvest(currentTool);
     }
 
+    // Debug helper
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

@@ -1,34 +1,25 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
 
-    public int wood;
-    public int stone;
-    public int gold;
+    private Dictionary<ResourceType, int> resources = new();
 
-    private void Awake()
+    void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
+        Instance = this;
     }
 
     public void AddResource(ResourceType type, int amount)
     {
-        switch (type)
-        {
-            case ResourceType.Wood:
-                wood += amount;
-                break;
-            case ResourceType.Stone:
-                stone += amount;
-                break;
-            case ResourceType.Gold:
-                gold += amount;
-                break;
-        }
+        if (!resources.ContainsKey(type))
+            resources[type] = 0;
+
+        resources[type] += amount;
+        Debug.Log($"{type} +{amount} (Total: {resources[type]})");
+
+        InventoryUI.Instance.UpdateUI(type, resources[type]);
     }
 }
