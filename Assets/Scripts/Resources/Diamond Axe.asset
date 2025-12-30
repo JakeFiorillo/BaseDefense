@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Diamond Axe
   m_EditorClassIdentifier: 
   toolName: Diamond Axe
-  swingCooldown: 0.9
+  swingCooldown: 0.5
   treeYieldAmounts: 030000000400000005000000
   treeYieldChances: 46000000140000000a000000
   rockYieldAmounts: 020000000300000004000000

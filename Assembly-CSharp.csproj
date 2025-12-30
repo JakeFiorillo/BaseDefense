@@ -48,7 +48,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.1.4f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Core\PlayerSwingVisual.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerSwingVisual.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryUI.cs" />
     <Compile Include="Assets\Scripts\Inventory\ResourceType.cs" />
@@ -56,7 +56,6 @@
     <Compile Include="Assets\Scripts\Inventory\HarvestType.cs" />
     <Compile Include="Assets\Scripts\Core\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\World\WorldSpawner.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerAim.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHarvest.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryManager.cs" />

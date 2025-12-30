@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fist
   m_EditorClassIdentifier: 
   toolName: Fist
-  swingCooldown: 1.2
+  swingCooldown: 0.8
   treeYieldAmounts: 0000000001000000
   treeYieldChances: 190000004b000000
   rockYieldAmounts: 0000000001000000

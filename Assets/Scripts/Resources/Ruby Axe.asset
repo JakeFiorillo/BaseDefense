@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ruby Axe
   m_EditorClassIdentifier: 
   toolName: Ruby Axe
-  swingCooldown: 0.8
+  swingCooldown: 0.4
   treeYieldAmounts: 030000000400000005000000
   treeYieldChances: 190000003200000019000000
   rockYieldAmounts: 030000000400000005000000

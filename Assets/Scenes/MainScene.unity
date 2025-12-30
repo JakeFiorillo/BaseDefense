@@ -398,13 +398,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287842532}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: 0.5, w: -0.8660254}
+  m_LocalPosition: {x: 0.2, y: -0.2, z: 0}
   m_LocalScale: {x: 0.1159, y: 0.1058, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 220078766}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 300}
 --- !u!212 &287842534
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -449,7 +449,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1987486691950890480, guid: 513bace2e4837a64b9c7ced759e441f2, type: 3}
+  m_Sprite: {fileID: 5010787112377136037, guid: 42f0f39093be0bb48842d9323dd37bb0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -753,7 +753,6 @@ GameObject:
   - component: {fileID: 544404466}
   - component: {fileID: 544404471}
   - component: {fileID: 544404473}
-  - component: {fileID: 544404475}
   - component: {fileID: 544404474}
   m_Layer: 6
   m_Name: Player
@@ -963,20 +962,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swingPivot: {fileID: 220078766}
   swingVisual: {fileID: 287842532}
-  swingAngle: 120
---- !u!114 &544404475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544404465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0151a37c07d7f64d90d254c6318308c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swingPivot: {fileID: 220078766}
+  swingRadius: 0.3
+  swingArcAngle: 100
+  swingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &560126371
 GameObject:
   m_ObjectHideFlags: 0
