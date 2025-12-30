@@ -13,12 +13,8 @@ MonoBehaviour:
   m_Name: Gold Axe
   m_EditorClassIdentifier: 
   toolName: Gold Axe
-  swingTime: 1
+  swingCooldown: 1
   treeYieldAmounts: 0200000003000000
-  treeYieldChances:
-  - 75
-  - 25
+  treeYieldChances: 4b00000019000000
   rockYieldAmounts: 0100000002000000
-  rockYieldChances:
-  - 25
-  - 75
+  rockYieldChances: 190000004b000000

@@ -9,16 +9,18 @@ public class PlayerHarvest : MonoBehaviour
     private float nextHarvestTime;
 
     void Update()
+{
+    if (Input.GetMouseButton(0))
     {
-        if (currentTool == null) return;
-
-        if (Input.GetMouseButton(0) && Time.time >= nextHarvestTime)
+        Debug.Log($"Time: {Time.time}, NextHarvest: {nextHarvestTime}, CanHarvest: {Time.time >= nextHarvestTime}");
+        
+        if (Time.time >= nextHarvestTime)
         {
             TryHarvest();
             nextHarvestTime = Time.time + currentTool.swingCooldown;
         }
     }
-
+}
     void TryHarvest()
     {
         Collider2D hit = Physics2D.OverlapCircle(

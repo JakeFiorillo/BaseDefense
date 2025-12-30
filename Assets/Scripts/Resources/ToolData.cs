@@ -24,6 +24,13 @@ public class ToolData : ScriptableObject
 
     private int Roll(int[] values, int[] chances)
     {
+        // Make sure arrays are valid
+        if (values == null || chances == null || values.Length != chances.Length)
+        {
+            Debug.LogError("Invalid yield arrays!");
+            return 0;
+        }
+
         int roll = Random.Range(0, 100);
         int cumulative = 0;
 
@@ -31,9 +38,13 @@ public class ToolData : ScriptableObject
         {
             cumulative += chances[i];
             if (roll < cumulative)
+            {
+                Debug.Log($"Rolled {roll}, returning {values[i]}");
                 return values[i];
+            }
         }
 
+        Debug.LogWarning($"Roll {roll} fell through! Cumulative was {cumulative}");
         return 0;
     }
 }

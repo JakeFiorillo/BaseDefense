@@ -13,13 +13,8 @@ MonoBehaviour:
   m_Name: Emerald Axe
   m_EditorClassIdentifier: 
   toolName: Emerald Axe
-  swingTime: 0.9
+  swingCooldown: 0.9
   treeYieldAmounts: 020000000300000004000000
-  treeYieldChances:
-  - 30
-  - 60
-  - 10
+  treeYieldChances: 1e0000003c0000000a000000
   rockYieldAmounts: 0200000003000000
-  rockYieldChances:
-  - 75
-  - 25
+  rockYieldChances: 4b00000019000000
