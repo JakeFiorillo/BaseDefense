@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 287842533}
   - component: {fileID: 287842534}
   m_Layer: 6
-  m_Name: SwingArc
+  m_Name: SwingVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -399,8 +399,8 @@ Transform:
   m_GameObject: {fileID: 287842532}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.2, y: 0, z: 0}
+  m_LocalScale: {x: 0.1159, y: 0.1058, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 220078766}
@@ -449,7 +449,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1105412082648430698, guid: 5fb9d3a87b4803445843f48b2eb60387, type: 3}
+  m_Sprite: {fileID: 1987486691950890480, guid: 513bace2e4837a64b9c7ced759e441f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -753,6 +753,8 @@ GameObject:
   - component: {fileID: 544404466}
   - component: {fileID: 544404471}
   - component: {fileID: 544404473}
+  - component: {fileID: 544404475}
+  - component: {fileID: 544404474}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -930,10 +932,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTool: {fileID: 11400000, guid: 541083989ba2f8548b511e7be0968ce9, type: 2}
-  harvestRange: 1.2
+  harvestRange: 0.4
   harvestLayer:
     serializedVersion: 2
     m_Bits: 8
+  swingVisual: {fileID: 544404474}
 --- !u!114 &544404473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,6 +949,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ae05c19c80d3149a87e7965968f516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &544404474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544404465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1dafe23ed58be7468878de773009a1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swingPivot: {fileID: 220078766}
+  swingVisual: {fileID: 287842532}
+  swingAngle: 120
+--- !u!114 &544404475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544404465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0151a37c07d7f64d90d254c6318308c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swingPivot: {fileID: 220078766}
 --- !u!1 &560126371
 GameObject:
   m_ObjectHideFlags: 0

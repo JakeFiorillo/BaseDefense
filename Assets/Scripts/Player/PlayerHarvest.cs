@@ -5,22 +5,24 @@ public class PlayerHarvest : MonoBehaviour
     public ToolData currentTool;
     public float harvestRange = 1.2f;
     public LayerMask harvestLayer;
+    
+    [SerializeField] private PlayerSwingVisual swingVisual;
 
     private float nextHarvestTime;
 
     void Update()
-{
-    if (Input.GetMouseButton(0))
     {
-        Debug.Log($"Time: {Time.time}, NextHarvest: {nextHarvestTime}, CanHarvest: {Time.time >= nextHarvestTime}");
-        
-        if (Time.time >= nextHarvestTime)
+        if (Input.GetMouseButton(0))
         {
-            TryHarvest();
-            nextHarvestTime = Time.time + currentTool.swingCooldown;
+            if (Time.time >= nextHarvestTime)
+            {
+                Debug.Log($"Cooldown value: {currentTool.swingCooldown}");
+                TryHarvest();
+                nextHarvestTime = Time.time + currentTool.swingCooldown;
+            }
         }
     }
-}
+
     void TryHarvest()
     {
         Collider2D hit = Physics2D.OverlapCircle(
@@ -44,12 +46,11 @@ public class PlayerHarvest : MonoBehaviour
         }
 
         harvestable.Harvest(currentTool);
-    }
-
-    // Debug helper
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, harvestRange);
+    
+        // Play swing visual with tool's cooldown
+        if (swingVisual != null)
+        {
+            swingVisual.PlaySwing(currentTool.swingCooldown);
+        }
     }
 }
