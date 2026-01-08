@@ -3,54 +3,60 @@ using UnityEngine;
 public class PlayerHarvest : MonoBehaviour
 {
     public ToolData currentTool;
-    public float harvestRange = 1.2f;
+    public float harvestRange = 0.4f;
     public LayerMask harvestLayer;
     
     [SerializeField] private PlayerSwingVisual swingVisual;
 
     private float nextHarvestTime;
+    private bool canHarvestDuringSwing = true;  // Allow harvesting during current swing
 
     void Update()
     {
+        // Swing happens regardless of targets
         if (Input.GetMouseButton(0))
         {
             if (Time.time >= nextHarvestTime)
             {
                 Debug.Log($"Cooldown value: {currentTool.swingCooldown}");
-                TryHarvest();
+                PerformSwing();
                 nextHarvestTime = Time.time + currentTool.swingCooldown;
             }
         }
     }
 
-    void TryHarvest()
+    void PerformSwing()
     {
-        Collider2D hit = Physics2D.OverlapCircle(
-            transform.position,
-            harvestRange,
-            harvestLayer
-        );
-
-        if (hit == null)
-        {
-            Debug.Log("No harvestable in range");
-            return;
-        }
-
-        Harvestable harvestable = hit.GetComponent<Harvestable>();
-
-        if (harvestable == null)
-        {
-            Debug.Log("Hit object but no Harvestable component");
-            return;
-        }
-
-        harvestable.Harvest(currentTool);
-    
+        // Reset harvest flag for this swing
+        canHarvestDuringSwing = true;
+        
         // Play swing visual with tool's cooldown
         if (swingVisual != null)
         {
             swingVisual.PlaySwing(currentTool.swingCooldown);
         }
+    }
+
+    // Called by SwingWeapon script when weapon hits something
+    public void OnWeaponHit(Collider2D hit)
+    {
+        // Only harvest once per swing
+        if (!canHarvestDuringSwing)
+            return;
+
+        Harvestable harvestable = hit.GetComponent<Harvestable>();
+
+        if (harvestable != null)
+        {
+            harvestable.Harvest(currentTool);
+            canHarvestDuringSwing = false;  // Prevent multiple harvests in one swing
+        }
+    }
+
+    // Debug helper
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, harvestRange);
     }
 }

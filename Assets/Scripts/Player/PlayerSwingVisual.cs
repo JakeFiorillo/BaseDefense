@@ -9,13 +9,13 @@ public class PlayerSwingVisual : MonoBehaviour
 
     [Header("Swing Settings")]
     [Range(0.1f, 2f)]
-    public float swingRadius = 0.4f;
+    public float swingRadius = 0.3f;
     [Range(60f, 240f)]
-    public float swingArcAngle = 120f;
+    public float swingArcAngle = 100f;
     public AnimationCurve swingCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
     private bool isSwinging;
-    private Vector3 idleLocalPosition = new Vector3(0.2f, -0.2f, 0f);
+    private Vector3 idleLocalPosition = new Vector3(0.2f, -0.25f, 0f);
     private Quaternion idleLocalRotation = Quaternion.Euler(0, 0, 300f);
     private float idleRotationAngle = 300f;  // Store the Z rotation value
 
