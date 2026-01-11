@@ -51,16 +51,23 @@
     <Compile Include="Assets\Scripts\Player\PlayerSwingVisual.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Core\GridManager.cs" />
-    <Compile Include="Assets\Scripts\Inventory\InventoryUI.cs" />
+    <Compile Include="Assets\Scripts\Core\BuildingType.cs" />
     <Compile Include="Assets\Scripts\Inventory\ResourceType.cs" />
+    <Compile Include="Assets\Scripts\Buildings\BuildingManager.cs" />
+    <Compile Include="Assets\Scripts\UI\InventoryUI.cs" />
     <Compile Include="Assets\Scripts\Resources\ToolData.cs" />
     <Compile Include="Assets\Scripts\Core\BuildingPlacer.cs" />
     <Compile Include="Assets\Scripts\Inventory\HarvestType.cs" />
     <Compile Include="Assets\Scripts\Core\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\World\WorldSpawner.cs" />
+    <Compile Include="Assets\Scripts\UI\BuildingButton.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Buildings\CoreBuilding.cs" />
+    <Compile Include="Assets\Scripts\UI\BuildingMenuUI.cs" />
     <Compile Include="Assets\Scripts\Player\SwingWeapon.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHarvest.cs" />
+    <Compile Include="Assets\Scripts\Buildings\Building.cs" />
+    <Compile Include="Assets\Scripts\Buildings\GoldGenerator.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\Resources\Harvestable.cs" />
   </ItemGroup>
