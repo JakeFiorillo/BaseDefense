@@ -10,7 +10,7 @@ public class GridManager : MonoBehaviour
     public float cellSize = 0.5f;
     
     [Header("Visual Settings")]
-    public Color gridColor = new Color(1f, 1f, 1f, 0.3f);
+    public Color gridColor = new Color(1f, 1f, 1f, 0.2f);
     public float gridLineWidth = 0.05f;
 
     private bool showGrid = false;
@@ -101,8 +101,8 @@ public class GridManager : MonoBehaviour
         SetGridVisibility(!showGrid);
     }
 
-    // Snap to center of a 2x2 grid area
-    public Vector3 SnapToGrid(Vector3 worldPosition)
+    // Snap to grid - size parameter determines if 1x1 or 2x2
+    public Vector3 SnapToGrid(Vector3 worldPosition, int gridSize = 2)
     {
         float offsetX = -(gridWidth * cellSize) / 2f;
         float offsetY = -(gridHeight * cellSize) / 2f;
@@ -111,18 +111,18 @@ public class GridManager : MonoBehaviour
         int gridX = Mathf.FloorToInt((worldPosition.x - offsetX) / cellSize);
         int gridY = Mathf.FloorToInt((worldPosition.y - offsetY) / cellSize);
 
-        // Clamp to grid bounds (buildings are 2x2 cells)
-        gridX = Mathf.Clamp(gridX, 0, gridWidth - 2);
-        gridY = Mathf.Clamp(gridY, 0, gridHeight - 2);
+        // Clamp to grid bounds
+        gridX = Mathf.Clamp(gridX, 0, gridWidth - gridSize);
+        gridY = Mathf.Clamp(gridY, 0, gridHeight - gridSize);
 
-        // Snap to center of the 2x2 area
-        float snappedX = offsetX + (gridX * cellSize) + cellSize;
-        float snappedY = offsetY + (gridY * cellSize) + cellSize;
+        // Snap to center of the area
+        float snappedX = offsetX + (gridX * cellSize) + (cellSize * gridSize / 2f);
+        float snappedY = offsetY + (gridY * cellSize) + (cellSize * gridSize / 2f);
 
         return new Vector3(snappedX, snappedY, 0);
     }
 
-    // Check if a 2x2 building can be placed at this position
+    // Check if a building can be placed at this position
     public bool IsValidPlacement(Vector3 worldPosition, float buildingSize = 1f)
     {
         // Check for overlaps using a box cast

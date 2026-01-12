@@ -6,15 +6,18 @@ public class BuildingPlacer : MonoBehaviour
     [Header("Building Prefabs")]
     public GameObject corePrefab;
     public GameObject goldGeneratorPrefab;
+    public GameObject wallPrefab;
     
     [Header("Building Icons")]
     public Sprite coreIcon;
     public Sprite goldGeneratorIcon;
+    public Sprite wallIcon;  
     
     [Header("Settings")]
     public KeyCode toggleGridKey = KeyCode.B;
     public KeyCode coreKey = KeyCode.C;
     public KeyCode goldGeneratorKey = KeyCode.Alpha1;
+    public KeyCode wallKey = KeyCode.Alpha2;
     
     [Header("Preview Colors")]
     public Color validColor = new Color(0f, 1f, 0f, 0.5f);
@@ -103,9 +106,15 @@ public class BuildingPlacer : MonoBehaviour
                 hotkey = "1",
                 cost = BuildingManager.Instance.GetGoldGeneratorCost(),
                 icon = goldGeneratorIcon
-            }
-            // Core is intentionally NOT in this list - it can only be placed at the start
-            // Add more buildings here as you create them
+            },
+            new BuildingInfo
+            {
+                buildingType = BuildingType.Wall,
+                buildingName = "Wall",
+                hotkey = "2",
+                cost = 10,  // Walls cost 10 gold
+                icon = wallIcon
+            }   
         };
 
     BuildingMenuUI.Instance.SetupBuildingButtons(buildings);
@@ -142,6 +151,10 @@ public class BuildingPlacer : MonoBehaviour
                 if (Input.GetKeyDown(goldGeneratorKey))
                 {
                     SelectBuilding(BuildingType.GoldGenerator, goldGeneratorPrefab);
+                }
+                if (Input.GetKeyDown(wallKey))
+                {
+                    SelectBuilding(BuildingType.Wall, wallPrefab);
                 }
             }
         }
@@ -241,24 +254,30 @@ public class BuildingPlacer : MonoBehaviour
         {
             Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorld.z = 0;
-            
-            Vector3 snappedPos = GridManager.Instance.SnapToGrid(mouseWorld);
+        
+            // Determine grid size based on building type
+            int gridSize = (selectedBuildingType == BuildingType.Wall) ? 1 : 2;
+            float buildingSize = (selectedBuildingType == BuildingType.Wall) ? 0.5f : 1f;
+        
+            Vector3 snappedPos = GridManager.Instance.SnapToGrid(mouseWorld, gridSize);
             previewBuilding.transform.position = snappedPos;
-            
+        
             // Check if placement is valid
-            currentPlacementValid = GridManager.Instance.IsValidPlacement(snappedPos, 1f);
-            
+            currentPlacementValid = GridManager.Instance.IsValidPlacement(snappedPos, buildingSize);
+        
             // Check if can afford (core is always free/affordable)
             bool canAfford = true;
             if (selectedBuildingType == BuildingType.GoldGenerator)
             {
                 canAfford = BuildingManager.Instance.CanAffordGoldGenerator();
-                if (BuildingMenuUI.Instance != null)
-                {
-                    BuildingMenuUI.Instance.UpdateBuildingAffordability(BuildingType.GoldGenerator, canAfford);
-                }
+                BuildingMenuUI.Instance.UpdateBuildingAffordability(BuildingType.GoldGenerator, canAfford);
             }
-            
+            else if (selectedBuildingType == BuildingType.Wall)
+            {
+                canAfford = Inventory.Instance.GetResource(ResourceType.Gold) >= 10;
+                BuildingMenuUI.Instance.UpdateBuildingAffordability(BuildingType.Wall, canAfford);
+            }
+        
             // Change preview color based on validity and affordability
             if (previewRenderer != null)
             {
@@ -286,7 +305,9 @@ public class BuildingPlacer : MonoBehaviour
             Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorld.z = 0;
         
-            Vector3 snappedPos = GridManager.Instance.SnapToGrid(mouseWorld);
+            // Determine grid size based on building type
+            int gridSize = (selectedBuildingType == BuildingType.Wall) ? 1 : 2;
+            Vector3 snappedPos = GridManager.Instance.SnapToGrid(mouseWorld, gridSize);
         
             // Place Core
             if (selectedBuildingType == BuildingType.Core)
@@ -323,7 +344,7 @@ public class BuildingPlacer : MonoBehaviour
                 DestroyPreview();
                 placementMode = false;
                 GridManager.Instance.SetGridVisibility(false);
-
+            
                 if (BuildingMenuUI.Instance != null)
                 {
                     BuildingMenuUI.Instance.ShowMenu(false);
@@ -372,6 +393,35 @@ public class BuildingPlacer : MonoBehaviour
                 }
             
                 Debug.Log($"Gold Generator placed! Cost: {cost}. Next one costs: {BuildingManager.Instance.GetGoldGeneratorCost()}");
+            }
+            // Place Wall - Add this entire block
+            else if (selectedBuildingType == BuildingType.Wall)
+            {
+                int cost = 10;
+            
+                // Deduct cost
+                Inventory.Instance.AddResource(ResourceType.Gold, -cost);
+            
+                // Place the building
+                GameObject building = Instantiate(currentBuildingPrefab, snappedPos, Quaternion.identity);
+            
+                // Enable colliders
+                Collider2D[] colliders = building.GetComponents<Collider2D>();
+                foreach (Collider2D col in colliders)
+                {
+                    col.enabled = true;
+                }
+            
+                building.tag = "Building";
+            
+                // Register with BuildingManager
+                Building buildingScript = building.GetComponent<Building>();
+                if (buildingScript != null)
+                {
+                    BuildingManager.Instance.RegisterBuilding(buildingScript);
+                }
+            
+                Debug.Log($"Wall placed! Cost: {cost}");
             }
         }
     }

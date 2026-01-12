@@ -8,6 +8,7 @@ public class BuildingManager : MonoBehaviour
     [Header("Building Prefabs")]
     public GameObject corePrefab;
     public GameObject goldGeneratorPrefab;
+    public GameObject wallPrefab;
     
     private bool coreHasBeenPlaced = false;
     private List<Building> allBuildings = new List<Building>();

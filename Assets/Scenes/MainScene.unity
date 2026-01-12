@@ -2188,6 +2188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   corePrefab: {fileID: 5383792501475354383, guid: 558429a8e36e19144a5d2257cbe4e8ac, type: 3}
   goldGeneratorPrefab: {fileID: 4443108433227451073, guid: 3d2bc57a1d81cd047b037622415f2878, type: 3}
+  wallPrefab: {fileID: 8271462490571942931, guid: a320a51b7638a0d468e1816eb37b9f0c, type: 3}
 --- !u!4 &1166910726
 Transform:
   m_ObjectHideFlags: 0
@@ -2484,11 +2485,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   corePrefab: {fileID: 5383792501475354383, guid: 558429a8e36e19144a5d2257cbe4e8ac, type: 3}
   goldGeneratorPrefab: {fileID: 4443108433227451073, guid: 3d2bc57a1d81cd047b037622415f2878, type: 3}
+  wallPrefab: {fileID: 8271462490571942931, guid: a320a51b7638a0d468e1816eb37b9f0c, type: 3}
   coreIcon: {fileID: -2255356125184915743, guid: 3c0966eff8edca843b148199d0af2108, type: 3}
   goldGeneratorIcon: {fileID: 4170809101293989188, guid: 4619e569a7fa0de40be57ff7b4e7edb1, type: 3}
+  wallIcon: {fileID: 2868539044483428322, guid: edee9ed67ad196f46b27455c36a9f8c9, type: 3}
   toggleGridKey: 98
   coreKey: 99
   goldGeneratorKey: 49
+  wallKey: 50
   validColor: {r: 0, g: 1, b: 0, a: 0.5}
   invalidColor: {r: 1, g: 0, b: 0, a: 0.5}
   cannotAffordColor: {r: 1, g: 0.5, b: 0, a: 0.5}
@@ -2947,7 +2951,7 @@ MonoBehaviour:
   gridWidth: 64
   gridHeight: 64
   cellSize: 0.5
-  gridColor: {r: 1, g: 1, b: 1, a: 0.3}
+  gridColor: {r: 1, g: 1, b: 1, a: 0.15686275}
   gridLineWidth: 0.05
 --- !u!4 &1646565141
 Transform:

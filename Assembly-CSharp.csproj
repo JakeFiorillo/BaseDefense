@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Buildings\GoldGenerator.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\Resources\Harvestable.cs" />
+    <Compile Include="Assets\Scripts\Buildings\Wall.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
