@@ -42,35 +42,47 @@
     <UnityVersion>6000.1.4f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\jakef\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\jakef\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.1.4f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.1.4f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.1.4f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Animations\BoltProjectile.cs" />
+    <Compile Include="Assets\Scripts\Animations\BombProjectile.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSwingVisual.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Core\GridManager.cs" />
+    <Compile Include="Assets\Scripts\Buildings\DefenseTower.cs" />
+    <Compile Include="Assets\Scripts\Animations\LaserBeam.cs" />
+    <Compile Include="Assets\Scripts\Buildings\BoltTower.cs" />
     <Compile Include="Assets\Scripts\Core\BuildingType.cs" />
     <Compile Include="Assets\Scripts\Inventory\ResourceType.cs" />
     <Compile Include="Assets\Scripts\Buildings\BuildingManager.cs" />
     <Compile Include="Assets\Scripts\UI\InventoryUI.cs" />
     <Compile Include="Assets\Scripts\Resources\ToolData.cs" />
+    <Compile Include="Assets\Scripts\Animations\ShockwaveEffect.cs" />
     <Compile Include="Assets\Scripts\Core\BuildingPlacer.cs" />
     <Compile Include="Assets\Scripts\Inventory\HarvestType.cs" />
     <Compile Include="Assets\Scripts\Core\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\World\WorldSpawner.cs" />
     <Compile Include="Assets\Scripts\UI\BuildingButton.cs" />
+    <Compile Include="Assets\Scripts\Animations\Projectile.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Buildings\BombTower.cs" />
     <Compile Include="Assets\Scripts\Buildings\CoreBuilding.cs" />
     <Compile Include="Assets\Scripts\UI\BuildingMenuUI.cs" />
+    <Compile Include="Assets\Scripts\Animations\CannonballProjectile.cs" />
     <Compile Include="Assets\Scripts\Player\SwingWeapon.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHarvest.cs" />
     <Compile Include="Assets\Scripts\Buildings\Building.cs" />
+    <Compile Include="Assets\Scripts\Buildings\ShockwaveTower.cs" />
     <Compile Include="Assets\Scripts\Buildings\GoldGenerator.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\Resources\Harvestable.cs" />
+    <Compile Include="Assets\Scripts\Buildings\CannonTower.cs" />
     <Compile Include="Assets\Scripts\Buildings\Wall.cs" />
+    <Compile Include="Assets\Scripts\Buildings\LaserTower.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
