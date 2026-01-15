@@ -2189,6 +2189,11 @@ MonoBehaviour:
   corePrefab: {fileID: 5383792501475354383, guid: 558429a8e36e19144a5d2257cbe4e8ac, type: 3}
   goldGeneratorPrefab: {fileID: 4443108433227451073, guid: 3d2bc57a1d81cd047b037622415f2878, type: 3}
   wallPrefab: {fileID: 8271462490571942931, guid: a320a51b7638a0d468e1816eb37b9f0c, type: 3}
+  bombTowerPrefab: {fileID: 1670136136911114017, guid: 84d08def808cbb4429f58e15a2c4546c, type: 3}
+  laserTowerPrefab: {fileID: 8230002669635449287, guid: 83052301dd6384d4e96b27e6e04b9cde, type: 3}
+  boltTowerPrefab: {fileID: 8221624739192460809, guid: e2424bbdd9a35b04c81d8f1c64565ed1, type: 3}
+  shockwaveTowerPrefab: {fileID: 5499893474178522933, guid: 30a0d9eb555511f40a8f4c19f722ce95, type: 3}
+  cannonTowerPrefab: {fileID: 6357319314740068134, guid: a08675df7acbfc647b550e8dcfc253b0, type: 3}
 --- !u!4 &1166910726
 Transform:
   m_ObjectHideFlags: 0
@@ -2486,13 +2491,28 @@ MonoBehaviour:
   corePrefab: {fileID: 5383792501475354383, guid: 558429a8e36e19144a5d2257cbe4e8ac, type: 3}
   goldGeneratorPrefab: {fileID: 4443108433227451073, guid: 3d2bc57a1d81cd047b037622415f2878, type: 3}
   wallPrefab: {fileID: 8271462490571942931, guid: a320a51b7638a0d468e1816eb37b9f0c, type: 3}
+  bombTowerPrefab: {fileID: 1670136136911114017, guid: 84d08def808cbb4429f58e15a2c4546c, type: 3}
+  laserTowerPrefab: {fileID: 8230002669635449287, guid: 83052301dd6384d4e96b27e6e04b9cde, type: 3}
+  boltTowerPrefab: {fileID: 8221624739192460809, guid: e2424bbdd9a35b04c81d8f1c64565ed1, type: 3}
+  shockwaveTowerPrefab: {fileID: 5499893474178522933, guid: 30a0d9eb555511f40a8f4c19f722ce95, type: 3}
+  cannonTowerPrefab: {fileID: 6357319314740068134, guid: a08675df7acbfc647b550e8dcfc253b0, type: 3}
   coreIcon: {fileID: -2255356125184915743, guid: 3c0966eff8edca843b148199d0af2108, type: 3}
   goldGeneratorIcon: {fileID: 4170809101293989188, guid: 4619e569a7fa0de40be57ff7b4e7edb1, type: 3}
   wallIcon: {fileID: 2868539044483428322, guid: edee9ed67ad196f46b27455c36a9f8c9, type: 3}
+  bombTowerIcon: {fileID: 2364007032807283063, guid: cc7a5d75064341e4e97e8ef05b45ad19, type: 3}
+  laserTowerIcon: {fileID: -3211874707107841833, guid: bced41d7ebd8a5644bc324cba987b0ae, type: 3}
+  boltTowerIcon: {fileID: 4525501638837219945, guid: 8a46d6ee4372b2644a5da2766fbadd64, type: 3}
+  shockwaveTowerIcon: {fileID: 4934680909405780463, guid: b3919b86a41ad504ebe3d339a8bb576a, type: 3}
+  cannonTowerIcon: {fileID: -5533060163084530068, guid: d2026fed7df4da546839841a63d7a3cf, type: 3}
   toggleGridKey: 98
   coreKey: 99
   goldGeneratorKey: 49
   wallKey: 50
+  bombTowerKey: 51
+  laserTowerKey: 52
+  boltTowerKey: 53
+  shockwaveTowerKey: 54
+  cannonTowerKey: 55
   validColor: {r: 0, g: 1, b: 0, a: 0.5}
   invalidColor: {r: 1, g: 0, b: 0, a: 0.5}
   cannotAffordColor: {r: 1, g: 0.5, b: 0, a: 0.5}
@@ -2545,7 +2565,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -538.5, y: -429}
+  m_AnchoredPosition: {x: -538.5, y: -235}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1544954969
@@ -3283,8 +3303,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1883417673}
-  - component: {fileID: 1883417675}
   - component: {fileID: 1883417674}
+  - component: {fileID: 1883417675}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -3334,7 +3354,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1883417672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -3343,14 +3363,12 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 10
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 110, y: 110}
+  m_Spacing: {x: 10, y: 10}
+  m_Constraint: 1
+  m_ConstraintCount: 2
 --- !u!1 &1902394803
 GameObject:
   m_ObjectHideFlags: 0
@@ -3424,8 +3442,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 225}
-  m_SizeDelta: {x: 250, y: 400}
+  m_AnchoredPosition: {x: 150, y: 275}
+  m_SizeDelta: {x: 250, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1912810866
 GameObject:

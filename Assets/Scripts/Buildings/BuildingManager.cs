@@ -9,13 +9,18 @@ public class BuildingManager : MonoBehaviour
     public GameObject corePrefab;
     public GameObject goldGeneratorPrefab;
     public GameObject wallPrefab;
+    public GameObject bombTowerPrefab;
+    public GameObject laserTowerPrefab;
+    public GameObject boltTowerPrefab;
+    public GameObject shockwaveTowerPrefab;
+    public GameObject cannonTowerPrefab;
     
     private bool coreHasBeenPlaced = false;
     private List<Building> allBuildings = new List<Building>();
     
     // Track how many gold generators have been built (for pricing)
     private int goldGeneratorsBuiltCount = 0;
-    private int[] goldGeneratorCosts = { 0, 100, 500, 1200 };  // Free, 100, 500, 1200
+    private int[] goldGeneratorCosts = { 0, 100, 500, 1200 };
     
     void Awake()
     {
@@ -38,14 +43,12 @@ public class BuildingManager : MonoBehaviour
     
     public int GetGoldGeneratorCost()
     {
-        // Return cost based on how many have been built
         if (goldGeneratorsBuiltCount < goldGeneratorCosts.Length)
         {
             return goldGeneratorCosts[goldGeneratorsBuiltCount];
         }
         else
         {
-            // After 4th, it costs 1200
             return 1200;
         }
     }
@@ -65,17 +68,15 @@ public class BuildingManager : MonoBehaviour
     {
         allBuildings.Remove(building);
         
-        // If a gold generator was destroyed, decrement count so it can be rebought at same price
         if (building.buildingType == BuildingType.GoldGenerator)
         {
             goldGeneratorsBuiltCount--;
             Debug.Log($"Gold generator destroyed. Can rebuy for {GetGoldGeneratorCost()} gold");
         }
         
-        // If core was destroyed - game over
         if (building.buildingType == BuildingType.Core)
         {
-            coreHasBeenPlaced = false;  // Technically, but game should be over
+            coreHasBeenPlaced = false;
         }
     }
     
@@ -84,6 +85,32 @@ public class BuildingManager : MonoBehaviour
         if (!allBuildings.Contains(building))
         {
             allBuildings.Add(building);
+        }
+    }
+    
+    // Helper method to get building costs
+    public int GetBuildingCost(BuildingType type)
+    {
+        switch (type)
+        {
+            case BuildingType.Core:
+                return 0;
+            case BuildingType.GoldGenerator:
+                return GetGoldGeneratorCost();
+            case BuildingType.Wall:
+                return 10;
+            case BuildingType.BombTower:
+                return 200;
+            case BuildingType.LaserTower:
+                return 250;
+            case BuildingType.BoltTower:
+                return 300;
+            case BuildingType.ShockwaveTower:
+                return 600;
+            case BuildingType.CannonTower:
+                return 400;
+            default:
+                return 0;
         }
     }
 }
