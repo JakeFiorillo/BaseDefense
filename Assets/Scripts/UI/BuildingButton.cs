@@ -19,6 +19,12 @@ public class BuildingButton : MonoBehaviour
     public Color cannotAffordColor = Color.red;
 
     private BuildingInfo info;
+    private Button button;
+
+    void Awake()
+    {
+        button = GetComponent<Button>();
+    }
 
     public void Setup(BuildingInfo buildingInfo)
     {

@@ -357,44 +357,50 @@ public class BuildingPlacer : MonoBehaviour
     void UpdateAllBuildingAffordability()
     {
         if (BuildingMenuUI.Instance == null) return;
-        
+    
         int currentGold = Inventory.Instance.GetResource(ResourceType.Gold);
-        
+    
         // Update each building type's affordability
         BuildingMenuUI.Instance.UpdateBuildingAffordability(
             BuildingType.GoldGenerator, 
             currentGold >= BuildingManager.Instance.GetGoldGeneratorCost()
         );
-        
+    
         BuildingMenuUI.Instance.UpdateBuildingAffordability(
             BuildingType.Wall, 
             currentGold >= 10
         );
-        
+    
         BuildingMenuUI.Instance.UpdateBuildingAffordability(
             BuildingType.BombTower, 
             currentGold >= 200
         );
-        
+    
         BuildingMenuUI.Instance.UpdateBuildingAffordability(
             BuildingType.LaserTower, 
             currentGold >= 250
         );
-        
+    
         BuildingMenuUI.Instance.UpdateBuildingAffordability(
             BuildingType.BoltTower, 
             currentGold >= 300
         );
-        
+    
         BuildingMenuUI.Instance.UpdateBuildingAffordability(
             BuildingType.ShockwaveTower, 
             currentGold >= 600
         );
-        
+    
         BuildingMenuUI.Instance.UpdateBuildingAffordability(
             BuildingType.CannonTower, 
             currentGold >= 400
         );
+
+        // Update axe upgrade affordability
+        if (AxeUpgradeUI.Instance != null)
+        {
+            AxeUpgradeUI.Instance.UpdateUI();
+        }
     }
 
     void PlaceBuilding()

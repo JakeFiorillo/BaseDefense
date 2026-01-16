@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 59ce4879c40aac649b7af4a339d2d2b6
+guid: f0e141f33189bfe4aa50287718106b70
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7264663968365940878
-    second: wooden_axe-1.png_0
+      213: -943474276702644868
+    second: emerald_axe-1.png_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wooden_axe-1.png_0
+      name: emerald_axe-1.png_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e80180fa36541d460800000000000000
-      internalID: 7264663968365940878
+      spriteID: c759b62e42b18e2f0800000000000000
+      internalID: -943474276702644868
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wooden_axe-1.png_0: 7264663968365940878
+      emerald_axe-1.png_0: -943474276702644868
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

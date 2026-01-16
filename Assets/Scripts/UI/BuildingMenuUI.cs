@@ -10,7 +10,6 @@ public class BuildingMenuUI : MonoBehaviour
     [Header("UI References")]
     public GameObject menuPanel;
     public Transform buttonContainer;
-    public TextMeshProUGUI instructionText;
 
     [Header("Button Prefab")]
     public GameObject buildingButtonPrefab;
@@ -28,7 +27,6 @@ public class BuildingMenuUI : MonoBehaviour
 
     void Start()
     {
-        // Hide menu by default
         if (menuPanel != null)
             menuPanel.SetActive(false);
     }
@@ -37,18 +35,22 @@ public class BuildingMenuUI : MonoBehaviour
     {
         if (menuPanel != null)
             menuPanel.SetActive(show);
+
+        // Update axe UI when menu is shown
+        if (show && AxeUpgradeUI.Instance != null)
+        {
+            AxeUpgradeUI.Instance.UpdateUI();
+        }
     }
 
     public void SetupBuildingButtons(List<BuildingInfo> buildings)
     {
-        // Clear existing buttons
         foreach (Transform child in buttonContainer)
         {
             Destroy(child.gameObject);
         }
         buildingButtons.Clear();
 
-        // Create buttons for each building
         foreach (BuildingInfo info in buildings)
         {
             GameObject buttonObj = Instantiate(buildingButtonPrefab, buttonContainer);
@@ -60,13 +62,32 @@ public class BuildingMenuUI : MonoBehaviour
                 buildingButtons[info.buildingType] = btn;
             }
         }
+
+        // Add axe upgrade button at the end
+        if (AxeUpgradeUI.Instance != null)
+        {
+            GameObject axeButtonObj = Instantiate(buildingButtonPrefab, buttonContainer);
+            BuildingButton axeBtn = axeButtonObj.GetComponent<BuildingButton>();
+
+            if (axeBtn != null)
+            {
+                AxeUpgradeUI.Instance.axeButton = axeBtn;
+                AxeUpgradeUI.Instance.UpdateUI();
+
+                // Make it clickable
+                Button buttonComponent = axeButtonObj.GetComponent<Button>();
+                if (buttonComponent != null)
+                {
+                    buttonComponent.onClick.AddListener(AxeUpgradeUI.Instance.OnAxeClicked);
+                }
+            }
+        }
     }
 
     public void SetSelectedBuilding(BuildingType type)
     {
         currentlySelected = type;
 
-        // Update all button visuals
         foreach (var kvp in buildingButtons)
         {
             kvp.Value.SetSelected(kvp.Key == type);
@@ -83,19 +104,6 @@ public class BuildingMenuUI : MonoBehaviour
 
     public void SetInstructionText(string text)
     {
-        if (instructionText != null)
-        {
-            instructionText.text = text;
-        }
+        // No longer used, but keeping for compatibility
     }
-}
-
-[System.Serializable]
-public class BuildingInfo
-{
-    public BuildingType buildingType;
-    public string buildingName;
-    public string hotkey;
-    public int cost;
-    public Sprite icon;
 }

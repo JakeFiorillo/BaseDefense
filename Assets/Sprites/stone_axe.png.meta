@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5fb9d3a87b4803445843f48b2eb60387
+guid: d3063fbefc82aa8458b8fd809c103d62
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1105412082648430698
-    second: swing_arc_0
+      213: -4160130743421579639
+    second: stone_axe-1.png_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: swing_arc_0
+      name: stone_axe-1.png_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 62
-        height: 19
+        width: 32
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 697c05b4199c8a0f0800000000000000
-      internalID: -1105412082648430698
+      spriteID: 98ecc23512f3446c0800000000000000
+      internalID: -4160130743421579639
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      swing_arc_0: -1105412082648430698
+      stone_axe-1.png_0: -4160130743421579639
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

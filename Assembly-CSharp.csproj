@@ -51,9 +51,11 @@
     <Compile Include="Assets\Scripts\Animations\BoltProjectile.cs" />
     <Compile Include="Assets\Scripts\Animations\BombProjectile.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSwingVisual.cs" />
+    <Compile Include="Assets\Scripts\UI\AxeUpgradeUI.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Core\GridManager.cs" />
     <Compile Include="Assets\Scripts\Buildings\DefenseTower.cs" />
+    <Compile Include="Assets\Scripts\Core\BuildingInfo.cs" />
     <Compile Include="Assets\Scripts\Animations\LaserBeam.cs" />
     <Compile Include="Assets\Scripts\Buildings\BoltTower.cs" />
     <Compile Include="Assets\Scripts\Core\BuildingType.cs" />
